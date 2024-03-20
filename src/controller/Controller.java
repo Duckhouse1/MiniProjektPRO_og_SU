@@ -85,12 +85,10 @@ public class Controller {
 	 * Pre: ordination og dato er ikke null
 	 */
 	public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-		if (dato.isAfter(ordination.getStartDen().plusDays(1))&&
-				dato.isBefore(ordination.getSlutDen().plusDays(1))){
-			ordination.givDosis(dato);
-		} else {
-			throw new IllegalArgumentException();
-		}
+			boolean succes = ordination.givDosis(dato);
+			if (!succes) {
+				throw new IllegalArgumentException();
+			}
 	}
 
 	/**
@@ -112,13 +110,15 @@ public class Controller {
 	public int antalOrdinationerPrVægtPrLægemiddel(double vægtStart, double vægtSlut, Laegemiddel laegemiddel) {
 		int antal = 0;
 		for (Patient patient : storage.getAllPatienter()){
-			for (Ordination ordination : patient.getOrdinationList()){
-				if (patient.getVaegt() >= vægtStart && patient.getVaegt() <= vægtSlut){
-
+			if (patient.getVaegt() >= vægtStart && patient.getVaegt() <= vægtSlut){
+				for (Ordination ordination : patient.getOrdinationList()){
+					if (ordination.getLaegemiddel() == laegemiddel){
+						antal++;
+					}
 				}
 			}
 		}
-		return 0;
+		return antal;
 	}
 
 	public List<Patient> getAllPatienter() {
