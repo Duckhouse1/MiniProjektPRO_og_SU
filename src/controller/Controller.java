@@ -110,7 +110,7 @@ public class Controller {
 		} else {
 			faktor = laegemiddel.getEnhedPrKgPrDoegnNormal();
 		}
-		return faktor* patient.getVaegt();
+		return faktor*patient.getVaegt();
 	}
 
 	/**

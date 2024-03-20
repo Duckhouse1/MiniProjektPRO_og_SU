@@ -40,8 +40,7 @@ public class DagligSkaev extends Ordination{
     @Override
     public double doegnDosis() {
         long dage = ChronoUnit.DAYS.between(super.getStartDen(),super.getSlutDen());
-        double dosis = samletDosis();
-        return dosis / dage;
+        return samletDosis() / dage;
     }
 
     /**
@@ -51,7 +50,7 @@ public class DagligSkaev extends Ordination{
      */
     @Override
     public String getType() {
-        return super.getLaegemiddel().getNavn();
+        return "Skæv";
     }
 
     public ArrayList<Dosis> getDosis() {
