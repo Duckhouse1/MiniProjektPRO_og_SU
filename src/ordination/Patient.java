@@ -9,9 +9,6 @@ public class Patient {
     private double vaegt;
     private List<Ordination> ordinationList = new ArrayList<>();
 
-    // TODO: Link til Ordination
-
-
     public List<Ordination> getOrdinationList() {
         return new ArrayList<>(ordinationList);
     }

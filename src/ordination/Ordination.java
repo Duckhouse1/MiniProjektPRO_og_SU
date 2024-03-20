@@ -8,12 +8,10 @@ public abstract class Ordination {
     private LocalDate slutDen;
     private Laegemiddel laegemiddel;
     public Ordination(Patient patient,LocalDate startDen, LocalDate slutDen) {
+
         this.startDen = startDen;
         this.slutDen = slutDen;
     }
-
-    // TODO Link til Laegemiddel
-    // TODO constructor (med specifikation)
 
     public LocalDate getStartDen() {
         return startDen;
@@ -31,6 +29,10 @@ public abstract class Ordination {
         return (int) ChronoUnit.DAYS.between(startDen, slutDen) + 1;
     }
 
+    public Laegemiddel getLaegemiddel() {
+        return laegemiddel;
+    }
+
     @Override
     public String toString() {
         return startDen.toString();
@@ -41,7 +43,6 @@ public abstract class Ordination {
      * @return
      */
     public abstract double samletDosis();
-
     /**
      * Returnerer den gennemsnitlige dosis givet pr dag i den periode ordinationen er gyldig
      * @return
@@ -54,3 +55,4 @@ public abstract class Ordination {
      */
     public abstract String getType();
 }
+
