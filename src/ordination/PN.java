@@ -32,7 +32,7 @@ public class PN extends Ordination    {
     }
 
     public double doegnDosis() {
-        return  (antalGange * antalEnheder) / antalDage();
+        return  samletDosis() / gemteDatoer.size();
     }
 
     @Override

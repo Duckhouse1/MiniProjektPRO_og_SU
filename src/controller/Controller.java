@@ -80,12 +80,10 @@ public class Controller {
 	 * Pre: ordination og dato er ikke null
 	 */
 	public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-		if (dato.isAfter(ordination.getStartDen().plusDays(1))&&
-				dato.isBefore(ordination.getSlutDen().plusDays(1))){
-			ordination.givDosis(dato);
-		} else {
-			throw new IllegalArgumentException();
-		}
+			boolean succes = ordination.givDosis(dato);
+			if (!succes) {
+				throw new IllegalArgumentException();
+			}
 	}
 
 	/**
