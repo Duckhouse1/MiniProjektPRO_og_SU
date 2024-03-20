@@ -39,8 +39,13 @@ public class Controller {
 	 */
 	public PN opretPNOrdination(LocalDate startDen, LocalDate slutDen,
 			Patient patient, Laegemiddel laegemiddel, double antal) {
-		// TODO
-		return null;
+		if (startDen.isAfter(slutDen)){
+			throw new IllegalArgumentException();
+		} else {
+			PN nyPN = new PN(antal,laegemiddel,startDen,slutDen);
+			patient.AddOrdination(nyPN);
+			return nyPN;
+		}
 	}
 
 	/**

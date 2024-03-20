@@ -18,6 +18,11 @@ public class Patient {
         this.navn = navn;
         this.vaegt = vaegt;
     }
+    public void AddOrdination(Ordination ordination){
+        if (!ordinationList.contains(ordination)){
+            ordinationList.add(ordination);
+        }
+    }
 
     public String getCprnr() {
         return cprnr;
