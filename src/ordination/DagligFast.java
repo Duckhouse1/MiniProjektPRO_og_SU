@@ -20,8 +20,8 @@ public class DagligFast extends Ordination {
         dosis[1] = new Dosis(LocalTime.of(12,00),middagAntal);
         dosis[2] = new Dosis(LocalTime.of(18,00),aftenAntal);
         dosis[3] = new Dosis(LocalTime.of(00,00),natAntal);
-        this.dosis = dosis;
     }
+
 
     /**
      * Returnerer den totale dosis der er givet i den periode ordinationen er gyldig
@@ -55,5 +55,9 @@ public class DagligFast extends Ordination {
     @Override
     public String getType() {
         return "Fast";
+    }
+
+    public Dosis[] getDosis() {
+        return dosis;
     }
 }
