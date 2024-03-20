@@ -4,11 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-import ordination.DagligFast;
-import ordination.DagligSkaev;
-import ordination.Laegemiddel;
-import ordination.PN;
-import ordination.Patient;
+import ordination.*;
 import storage.Storage;
 
 public class Controller {
@@ -99,7 +95,7 @@ public class Controller {
 	 * Pre: patient og lægemiddel er ikke null
 	 */
 	public double anbefaletDosisPrDoegn(Patient patient, Laegemiddel laegemiddel) {
-		//TODO
+
 		return 0;
 	}
 
@@ -108,9 +104,15 @@ public class Controller {
 	 * ordinationer.
 	 * Pre: laegemiddel er ikke null
 	 */
-	public int antalOrdinationerPrVægtPrLægemiddel(double vægtStart,
-			double vægtSlut, Laegemiddel laegemiddel) {
-		// TODO
+	public int antalOrdinationerPrVægtPrLægemiddel(double vægtStart, double vægtSlut, Laegemiddel laegemiddel) {
+		int antal = 0;
+		for (Patient patient : storage.getAllPatienter()){
+			for (Ordination ordination : patient.getOrdinationList()){
+				if (patient.getVaegt() >= vægtStart && patient.getVaegt() <= vægtSlut){
+
+				}
+			}
+		}
 		return 0;
 	}
 
