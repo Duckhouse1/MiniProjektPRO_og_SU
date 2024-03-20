@@ -37,7 +37,8 @@ public class PN extends Ordination    {
 
     @Override
     public String getType() {
-        return getType();
+        String type = "PN";
+        return type;
     }
 
 
