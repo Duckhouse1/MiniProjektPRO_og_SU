@@ -2,6 +2,7 @@ package ordination;
 
 import java.lang.reflect.Array;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -15,11 +16,10 @@ public class DagligFast extends Ordination {
 
     public DagligFast(Patient patient, LocalDate startDen, LocalDate slutDen, double morgenAntal, double middagAntal, double aftenAntal, double natAntal, Dosis[] dosis) {
         super(patient, startDen, slutDen);
-        dosis[0] = ()
-        this.morgenAntal = morgenAntal;
-        this.middagAntal = middagAntal;
-        this.aftenAntal = aftenAntal;
-        this.natAntal = natAntal;
+        dosis[0] = new Dosis(LocalTime.of(7,00),morgenAntal);
+        dosis[1] = new Dosis(LocalTime.of(12,00),middagAntal);
+        dosis[2] = new Dosis(LocalTime.of(18,00),aftenAntal);
+        dosis[3] = new Dosis(LocalTime.of(00,00),natAntal);
         this.dosis = dosis;
     }
 
