@@ -50,12 +50,17 @@ public class Controller {
 	 * Pre: startDen, slutDen, patient og laegemiddel er ikke null
 	 * Pre: margenAntal, middagAntal, aftanAntal, natAntal >= 0
 	 */
-	public DagligFast opretDagligFastOrdination(LocalDate startDen,
-			LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
-			double morgenAntal, double middagAntal, double aftenAntal,
-			double natAntal) {
-		// TODO
-		return null;
+	public DagligFast opretDagligFastOrdination(LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
+			double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
+		DagligFast dagligFast;
+		if (startDen.isAfter(slutDen)){
+			throw new IllegalArgumentException();
+		} else {
+			dagligFast = new DagligFast(laegemiddel,startDen,slutDen,morgenAntal,middagAntal,aftenAntal,natAntal);
+			patient.AddOrdination(dagligFast);
+		}
+
+		return dagligFast;
 	}
 
 	/**
@@ -66,11 +71,15 @@ public class Controller {
 	 * Pre: startDen, slutDen, patient og laegemiddel er ikke null
 	 * Pre: alle tal i antalEnheder > 0
 	 */
-	public DagligSkaev opretDagligSkaevOrdination(LocalDate startDen,
-			LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
+	public DagligSkaev opretDagligSkaevOrdination(LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
 			LocalTime[] klokkeSlet, double[] antalEnheder) {
-		// TODO
-		return null;
+		if (startDen.isAfter(slutDen)){
+			throw new IllegalArgumentException();
+		}else{
+			DagligSkaev skæv = new DagligSkaev(laegemiddel,startDen,slutDen);
+			patient.AddOrdination(skæv);
+			return skæv;
+		}
 	}
 
 	/**
