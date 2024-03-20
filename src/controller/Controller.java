@@ -66,11 +66,16 @@ public class Controller {
 	 * Pre: startDen, slutDen, patient og laegemiddel er ikke null
 	 * Pre: alle tal i antalEnheder > 0
 	 */
-	public DagligSkaev opretDagligSkaevOrdination(LocalDate startDen,
-			LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
+	public DagligSkaev opretDagligSkaevOrdination(LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
 			LocalTime[] klokkeSlet, double[] antalEnheder) {
-		// TODO
-		return null;
+		if (startDen.isAfter(slutDen)){
+			throw new IllegalArgumentException();
+		}else{
+			DagligSkaev skæv = new DagligSkaev(laegemiddel,startDen,slutDen);
+			patient.AddOrdination(skæv);
+			return skæv;
+		}
+
 	}
 
 	/**
