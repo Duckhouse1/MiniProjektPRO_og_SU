@@ -107,8 +107,8 @@ public class Controller {
 	public int antalOrdinationerPrVægtPrLægemiddel(double vægtStart, double vægtSlut, Laegemiddel laegemiddel) {
 		int antal = 0;
 		for (Patient patient : storage.getAllPatienter()){
-			for (Ordination ordination : patient.getOrdinationList()){
-				if (patient.getVaegt() >= vægtStart && patient.getVaegt() <= vægtSlut){
+			if (patient.getVaegt() >= vægtStart && patient.getVaegt() <= vægtSlut){
+				for (Ordination ordination : patient.getOrdinationList()){
 					if (ordination.getLaegemiddel() == laegemiddel){
 						antal++;
 					}
