@@ -78,6 +78,9 @@ public class Controller {
 		}else{
 			DagligSkaev skæv = new DagligSkaev(laegemiddel,startDen,slutDen);
 			patient.AddOrdination(skæv);
+			for (int i = 0; i < klokkeSlet.length; i++) {
+				skæv.opretDosis(klokkeSlet[i], antalEnheder[i]);
+			}
 			return skæv;
 		}
 	}

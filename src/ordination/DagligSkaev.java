@@ -9,12 +9,16 @@ import java.util.ArrayList;
 
 public class DagligSkaev extends Ordination{
     private ArrayList<Dosis> dosis = new ArrayList<>();
+
+    private LocalTime[] klokkeSlet;
+    private double[] antalEnheder;
+
     public DagligSkaev(Laegemiddel laegemiddel,LocalDate startDen, LocalDate slutDen) {
         super(laegemiddel,startDen, slutDen);
     }
 
-    public void opretDosis(LocalTime tid, double antal) {
-        Dosis dosis = new Dosis(tid,antal);
+    public void opretDosis(LocalTime klokkeSlet, double antalEnheder) {
+        Dosis dosis = new Dosis(klokkeSlet, antalEnheder);
         this.dosis.add(dosis);
     }
 
@@ -24,13 +28,7 @@ public class DagligSkaev extends Ordination{
      * @return
      */
     @Override
-    public double samletDosis() {
-        double sum = 0;
-        for (Dosis d : dosis){
-            sum += d.getAntal();
-        }
-        return sum;
-    }
+    public double samletDosis() {return super.antalDage()*doegnDosis();}
 
     /**
      * Returnerer den gennemsnitlige dosis givet pr dag i den periode ordinationen er gyldig
@@ -39,8 +37,11 @@ public class DagligSkaev extends Ordination{
      */
     @Override
     public double doegnDosis() {
-        long dage = ChronoUnit.DAYS.between(super.getStartDen(),super.getSlutDen());
-        return samletDosis() / dage;
+        double dagsdosis = 0;
+        for (Dosis doser : dosis){
+            dagsdosis += doser.getAntal();
+        }
+        return dagsdosis;
     }
 
     /**
