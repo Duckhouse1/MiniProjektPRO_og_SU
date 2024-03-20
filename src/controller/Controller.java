@@ -109,11 +109,13 @@ public class Controller {
 		for (Patient patient : storage.getAllPatienter()){
 			for (Ordination ordination : patient.getOrdinationList()){
 				if (patient.getVaegt() >= vægtStart && patient.getVaegt() <= vægtSlut){
-
+					if (ordination.getLaegemiddel() == laegemiddel){
+						antal++;
+					}
 				}
 			}
 		}
-		return 0;
+		return antal;
 	}
 
 	public List<Patient> getAllPatienter() {
