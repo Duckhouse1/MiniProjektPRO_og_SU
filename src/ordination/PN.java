@@ -43,7 +43,7 @@ public class PN extends Ordination    {
 
 
     public double samletDosis() {
-        return antalGange * antalEnheder;
+        return gemteDatoer.size() * antalEnheder;
     }
 
     /**
