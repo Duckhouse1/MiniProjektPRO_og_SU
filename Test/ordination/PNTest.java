@@ -48,6 +48,12 @@ class PNTest {
         pn.givDosis(LocalDate.of(2024,03,22));
 
         assertEquals(5,pn.doegnDosis());
+
+        pn.givDosis(LocalDate.of(2024,03,22));
+        pn.givDosis(LocalDate.of(2024,03,23));
+
+        assertEquals(6.25,pn.doegnDosis());
+
     }
 
     @Test

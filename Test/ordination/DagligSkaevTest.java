@@ -19,7 +19,6 @@ class DagligSkaevTest {
         assertEquals("Skæv",dskæv.getType());
         assertEquals(LocalDate.of(2024,03,22),dskæv.getStartDen());
 
-
     }
 
     @Test
