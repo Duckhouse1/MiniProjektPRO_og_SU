@@ -36,7 +36,7 @@ public class Controller {
 	public PN opretPNOrdination(LocalDate startDen, LocalDate slutDen,
 			Patient patient, Laegemiddel laegemiddel, double antal) {
 		if (startDen.isAfter(slutDen)){
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Start dato skal komme før slut dato");
 		} else {
 			PN nyPN = new PN(antal,laegemiddel,startDen,slutDen);
 			patient.AddOrdination(nyPN);
@@ -54,7 +54,7 @@ public class Controller {
 			double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
 		DagligFast dagligFast;
 		if (startDen.isAfter(slutDen)){
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("start dato skal være før slut dato");
 		} else {
 			dagligFast = new DagligFast(laegemiddel,startDen,slutDen,morgenAntal,middagAntal,aftenAntal,natAntal);
 			patient.AddOrdination(dagligFast);
@@ -74,7 +74,7 @@ public class Controller {
 	public DagligSkaev opretDagligSkaevOrdination(LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
 			LocalTime[] klokkeSlet, double[] antalEnheder) {
 		if (startDen.isAfter(slutDen)){
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Start dato skal være før slut dato");
 		}else{
 			DagligSkaev skæv = new DagligSkaev(laegemiddel,startDen,slutDen);
 			patient.AddOrdination(skæv);
