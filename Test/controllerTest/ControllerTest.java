@@ -126,13 +126,13 @@ class ControllerTest {
         //TC1 Indenfor
         double expected = patient.getVaegt()*laegemiddel.getEnhedPrKgPrDoegnNormal();
 
-        assertEquals(expected,controller.anbefaletDosisPrDoegn(patient,laegemiddel));
+        assertEquals(1552,controller.anbefaletDosisPrDoegn(patient,laegemiddel));
 
         //TC2 Udenfor
         Patient Dennis = controller.opretPatient("1201992061", "Dennis", -30);
         double expectedTC2 = Dennis.getVaegt()*laegemiddel.getEnhedPrKgPrDoegnLet();
 
-        assertEquals(expectedTC2,controller.anbefaletDosisPrDoegn(Dennis,laegemiddel));
+        assertEquals(-300,controller.anbefaletDosisPrDoegn(Dennis,laegemiddel));
     }
 
     @Test
