@@ -7,7 +7,18 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PNTest {
+    @Test
+    void PNConstructer(){
+        Laegemiddel l1 = new Laegemiddel("MDMA",10,20,30,"Styk");
+        LocalDate startDato = LocalDate.of(2024,03,01);
+        LocalDate slutDato = LocalDate.of(2024,03,11);
+        PN pn = new PN(6,l1,startDato,slutDato);
 
+        assertEquals(6,pn.getAntalEnheder());
+        assertEquals(startDato,pn.getStartDen());
+        assertEquals(slutDato,pn.getSlutDen());
+        assertEquals(l1,pn.getLaegemiddel());
+    }
     @Test
     void givDosis() {
         Laegemiddel l1 =new Laegemiddel("Paracetamol", 1, 1.5, 2, "Ml");

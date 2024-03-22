@@ -94,7 +94,7 @@ public class Controller {
 	public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
 			boolean succes = ordination.givDosis(dato);
 			if (!succes) {
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("Der er ikke en ordination for denne dato");
 			}
 	}
 

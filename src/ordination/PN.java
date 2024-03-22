@@ -65,4 +65,19 @@ public class PN extends Ordination    {
     public int getAntalGange() {
         return antalGange;
     }
+
+    @Override
+    public LocalDate getStartDen() {
+        return super.getStartDen();
+    }
+
+    @Override
+    public LocalDate getSlutDen() {
+        return super.getSlutDen();
+    }
+
+    @Override
+    public Laegemiddel getLaegemiddel() {
+        return super.getLaegemiddel();
+    }
 }

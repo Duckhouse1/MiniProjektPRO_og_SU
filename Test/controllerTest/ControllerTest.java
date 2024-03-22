@@ -93,11 +93,19 @@ class ControllerTest {
     }
 
     @Test
-    void ordinationPNAnvendt() {
+    void TC1ordinationPNAnvendt() {
         LocalDate valgtDag = LocalDate.of(2024, 03, 01);
         controller.ordinationPNAnvendt(pn, valgtDag);
 
         assertTrue(pn.getGemteDatoer().contains(valgtDag));
+    }
+    @Test
+    void TC2ordinationPNAnvendt() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->{
+            LocalDate valgtDag = LocalDate.of(2025, 03, 01);
+            controller.ordinationPNAnvendt(pn, valgtDag);
+        });
+        assertEquals("Der er ikke en ordination for denne dato",exception.getMessage());
     }
     @Test
     void anbefaletDosisPrDoegn() {
