@@ -18,6 +18,7 @@ class DagligSkaevTest {
 
         assertEquals("Skæv",dskæv.getType());
         assertEquals(LocalDate.of(2024,03,22),dskæv.getStartDen());
+        assertEquals(l1,dskæv.getLaegemiddel());
 
 
     }
@@ -26,9 +27,13 @@ class DagligSkaevTest {
     void opretDosis() {
         Laegemiddel l1 = new Laegemiddel("Acetylsalicylsyre", 0.1, 0.15, 0.16, "Styk");
         DagligSkaev dskæv = new DagligSkaev(l1, LocalDate.of(2024,03,22),LocalDate.of(2024,03,22));
-        Patient patient = new Patient("121256-0512", "Jane Jensen", 63.4);
+        dskæv.opretDosis(LocalTime.of(22,30),2);
 
-        assertEquals(dskæv,dskæv);
+        assertEquals(2,dskæv.getDosis().get(0).getAntal());
+        assertEquals(LocalTime.of(22,30),dskæv.getDosis().get(0).getTid());
+
+        assertThrows(RuntimeException.class, () -> dskæv.opretDosis(LocalTime.of(21, 00), 0));
+
 
     }
 
