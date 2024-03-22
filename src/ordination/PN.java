@@ -32,7 +32,23 @@ public class PN extends Ordination    {
     }
 
     public double doegnDosis() {
-        return  samletDosis() / gemteDatoer.size();
+        long antalDageIAlt;
+        if (gemteDatoer.size() == 0){
+            return 0;
+        }else {
+            LocalDate startdato = gemteDatoer.get(0);
+            LocalDate slutDato = gemteDatoer.get(0);
+            int antalDatoer = 0;
+            for (LocalDate dato : gemteDatoer){
+                if (dato.isAfter(slutDato)){
+                    slutDato = dato;
+                } else if (dato.isBefore(startdato)){
+                    startdato = dato;
+                }
+            }
+            antalDageIAlt = ChronoUnit.DAYS.between(startdato,slutDato.plusDays(1));
+        }
+        return samletDosis() / antalDageIAlt;
     }
 
     @Override

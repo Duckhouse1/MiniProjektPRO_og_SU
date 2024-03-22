@@ -20,6 +20,13 @@ class DagligFastTest {
         laegemiddel = new Laegemiddel("Ketamin", 1.0, 2.0, 3.0, "mg");
         startDen = LocalDate.of(2023, 1, 1);
         slutDen = LocalDate.of(2023, 1, 3);
+        ordination = new DagligFast(laegemiddel,startDen,slutDen,2,3,0,1);
+    }
+    @Test
+    void DagligFastConstructer(){
+        assertEquals("fast".toLowerCase(),ordination.getType().toLowerCase());
+        assertEquals(2,ordination.getMorgenAntal());
+        assertEquals(1,ordination.getNatAntal());
     }
 
     @Test

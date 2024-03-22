@@ -74,7 +74,6 @@ class ControllerTest {
 
         LocalTime[] klokkeslet = {tid1,tid2,tid3,tid4};
         DagligSkaev nyDagligSkæv = controller.opretDagligSkaevOrdination(startDato,slutDato,patient,laegemiddel,klokkeslet, tal);
-
         assertTrue(patient.getOrdinationList().contains(nyDagligSkæv));
     }
     @Test
@@ -109,6 +108,17 @@ class ControllerTest {
     }
     @Test
     void anbefaletDosisPrDoegn() {
+
+        //TC1 Indenfor
+        double expected = patient.getVaegt()*laegemiddel.getEnhedPrKgPrDoegnNormal();
+
+        assertEquals(expected,controller.anbefaletDosisPrDoegn(patient,laegemiddel));
+
+        //TC2 Udenfor
+        Patient Dennis = controller.opretPatient("1201992061", "Dennis", -30);
+        double expectedTC2 = Dennis.getVaegt()*laegemiddel.getEnhedPrKgPrDoegnLet();
+
+        assertEquals(expectedTC2,controller.anbefaletDosisPrDoegn(Dennis,laegemiddel));
     }
 
     @Test
