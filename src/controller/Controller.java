@@ -48,7 +48,7 @@ public class Controller {
 	 * Opretter og returnerer en DagligFast ordination. Hvis startDato er efter
 	 * slutDato kastes en IllegalArgumentException og ordinationen oprettes ikke
 	 * Pre: startDen, slutDen, patient og laegemiddel er ikke null
-	 * Pre: margenAntal, middagAntal, aftanAntal, natAntal >= 0
+	 * Pre: margenAntal  , middagAntal, aftanAntal, natAntal >= 0
 	 */
 	public DagligFast opretDagligFastOrdination(LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
 			double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
