@@ -11,6 +11,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class DagligSkaevTest {
 
     @Test
+    void DagligSkaev(){
+        Laegemiddel l1 = new Laegemiddel("Acetylsalicylsyre", 0.1, 0.15, 0.16, "Styk");
+        DagligSkaev dskæv = new DagligSkaev(l1, LocalDate.of(2024,03,22),LocalDate.of(2024,03,22));
+
+
+        assertEquals("Skæv",dskæv.getType());
+        assertEquals(LocalDate.of(2024,03,22),dskæv.getStartDen());
+
+
+    }
+
+    @Test
     void opretDosis() {
         Laegemiddel l1 = new Laegemiddel("Acetylsalicylsyre", 0.1, 0.15, 0.16, "Styk");
         DagligSkaev dskæv = new DagligSkaev(l1, LocalDate.of(2024,03,22),LocalDate.of(2024,03,22));

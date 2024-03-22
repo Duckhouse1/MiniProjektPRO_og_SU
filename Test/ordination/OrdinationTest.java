@@ -18,6 +18,7 @@ class OrdinationTest {
 
         assertEquals(5,d1.antalDage());
 
+
         DagligSkaev d2 = new DagligSkaev(null,dagSlut2,dagStart1);
         assertThrows(RuntimeException.class,() -> d2.antalDage());
     }
