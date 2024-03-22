@@ -29,7 +29,6 @@ class ControllerTest {
         laegemiddel = controller.opretLaegemiddel("Acetylsalicylsyre", 10, 20, 30, "stk");
         pn = controller.opretPNOrdination(startDato, slutDato, patient, laegemiddel, 5);
         dagligFast = controller.opretDagligFastOrdination(startDato,slutDato,patient,laegemiddel,2,3,0,1);
-
     }
 
     @Test
