@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,15 +20,6 @@ class DagligFastTest {
         laegemiddel = new Laegemiddel("Ketamin", 1.0, 2.0, 3.0, "mg");
         startDen = LocalDate.of(2023, 1, 1);
         slutDen = LocalDate.of(2023, 1, 3);
-    }
-
-    @Test
-    public DagligFastTest(Laegemiddel laegemiddel, LocalDate startDen, LocalDate slutDen, double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
-        super(laegemiddel,startDen, slutDen);
-        dosis[0] = new Dosis(LocalTime.of(7,00),morgenAntal);
-        dosis[1] = new Dosis(LocalTime.of(12,00),middagAntal);
-        dosis[2] = new Dosis(LocalTime.of(18,00),aftenAntal);
-        dosis[3] = new Dosis(LocalTime.of(00,00),natAntal);
     }
 
     @Test
