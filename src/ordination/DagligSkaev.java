@@ -15,6 +15,9 @@ public class DagligSkaev extends Ordination{
     }
 
     public void opretDosis(LocalTime klokkeSlet, double antalEnheder) {
+        if (antalEnheder < 1){
+            throw new RuntimeException();
+        }
         Dosis dosis = new Dosis(klokkeSlet, antalEnheder);
         this.dosis.add(dosis);
     }
