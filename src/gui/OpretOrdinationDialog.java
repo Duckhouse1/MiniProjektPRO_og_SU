@@ -172,8 +172,8 @@ public class OpretOrdinationDialog extends Stage {
 	}
 
 	private void opretSkaev() {
-		if (startDato.getValue() == null || slutDato.getValue() == null) {
-			lblError.setText("Datoer skal angives");
+		if (startDato.getValue() == null || slutDato.getValue() == null || startDato.getValue().isAfter(slutDato.getValue())) {
+			lblError.setText("Datoer skal angives, eller dato er forkert");
 			return;
 		}
 
