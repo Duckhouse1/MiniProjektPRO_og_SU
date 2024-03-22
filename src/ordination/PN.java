@@ -58,4 +58,11 @@ public class PN extends Ordination    {
         return antalEnheder;
     }
 
+    public ArrayList<LocalDate> getGemteDatoer() {
+        return gemteDatoer;
+    }
+
+    public int getAntalGange() {
+        return antalGange;
+    }
 }

@@ -26,6 +26,9 @@ public abstract class Ordination {
      * @return antal dage ordinationen gælder for
      */
     public int antalDage() {
+        if (startDen.isAfter(slutDen)){
+            throw new RuntimeException();
+        }
         return (int) ChronoUnit.DAYS.between(startDen, slutDen) + 1;
     }
 
