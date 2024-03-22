@@ -16,10 +16,10 @@ public class DagligFast extends Ordination {
 
     public DagligFast(Laegemiddel laegemiddel, LocalDate startDen, LocalDate slutDen, double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
         super(laegemiddel,startDen, slutDen);
-        dosis[0] = new Dosis(LocalTime.of(7,00),morgenAntal);
-        dosis[1] = new Dosis(LocalTime.of(12,00),middagAntal);
-        dosis[2] = new Dosis(LocalTime.of(18,00),aftenAntal);
-        dosis[3] = new Dosis(LocalTime.of(00,00),natAntal);
+        dosis[0] = new Dosis(LocalTime.of(7,00),this.morgenAntal = morgenAntal);
+        dosis[1] = new Dosis(LocalTime.of(12,00),this.middagAntal = middagAntal);
+        dosis[2] = new Dosis(LocalTime.of(18,00),this.aftenAntal = aftenAntal);
+        dosis[3] = new Dosis(LocalTime.of(00,00),this.natAntal = natAntal);
     }
 
 
@@ -59,5 +59,36 @@ public class DagligFast extends Ordination {
 
     public Dosis[] getDosis() {
         return dosis;
+    }
+
+    @Override
+    public LocalDate getStartDen() {
+        return super.getStartDen();
+    }
+
+    @Override
+    public LocalDate getSlutDen() {
+        return super.getSlutDen();
+    }
+
+    @Override
+    public Laegemiddel getLaegemiddel() {
+        return super.getLaegemiddel();
+    }
+
+    public double getMorgenAntal() {
+        return morgenAntal;
+    }
+
+    public double getMiddagAntal() {
+        return middagAntal;
+    }
+
+    public double getAftenAntal() {
+        return aftenAntal;
+    }
+
+    public double getNatAntal() {
+        return natAntal;
     }
 }
