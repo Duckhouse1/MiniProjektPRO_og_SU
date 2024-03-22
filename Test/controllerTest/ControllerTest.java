@@ -78,6 +78,20 @@ class ControllerTest {
     }
     @Test
     void TC2ExceptionopretDagligSkaevOrdination() {
+        LocalTime tid1 = LocalTime.of(7,00);
+        LocalTime tid2 = LocalTime.of(9,00);
+        LocalTime tid3 = LocalTime.of(12,30);
+        LocalTime tid4 = LocalTime.of(16,00);
+        LocalTime[] klokkeslet = {tid1,tid2,tid3,tid4};
+
+        double tal[] = {2.0,4.0,1.0,2.0,7.0};
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->{
+            DagligSkaev nyDagligSkæv = controller.opretDagligSkaevOrdination(startDato,slutDato,patient,laegemiddel,klokkeslet, tal);
+        });
+        assertEquals("Antal enheder og elementer i klokkeslet skal være det samme",exception.getMessage());
+    }
+    @Test
+    void TC3ExceptionopretDagligSkaevOrdination() {
         LocalTime tid1 = LocalTime.of(07,00);
         LocalTime tid2 = LocalTime.of(10,00);
         LocalTime tid3 = LocalTime.of(13,30);

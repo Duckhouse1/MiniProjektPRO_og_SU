@@ -75,7 +75,11 @@ public class Controller {
 			LocalTime[] klokkeSlet, double[] antalEnheder) {
 		if (startDen.isAfter(slutDen)){
 			throw new IllegalArgumentException("Start dato skal være før slut dato");
-		}else{
+		}
+		if (antalEnheder.length != klokkeSlet.length){
+			throw new IllegalArgumentException("Antal enheder og elementer i klokkeslet skal være det samme");
+		}
+		else{
 			DagligSkaev skæv = new DagligSkaev(laegemiddel,startDen,slutDen);
 			patient.AddOrdination(skæv);
 			for (int i = 0; i < klokkeSlet.length; i++) {
