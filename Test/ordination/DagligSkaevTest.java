@@ -26,9 +26,13 @@ class DagligSkaevTest {
     void opretDosis() {
         Laegemiddel l1 = new Laegemiddel("Acetylsalicylsyre", 0.1, 0.15, 0.16, "Styk");
         DagligSkaev dskæv = new DagligSkaev(l1, LocalDate.of(2024,03,22),LocalDate.of(2024,03,22));
-        Patient patient = new Patient("121256-0512", "Jane Jensen", 63.4);
 
-        assertEquals(dskæv,dskæv);
+        dskæv.opretDosis(LocalTime.of(22,30),2);
+
+        assertEquals(2,dskæv.getDosis().get(0).getAntal());
+        assertEquals(LocalTime.of(22,30),dskæv.getDosis().get(0).getTid());
+
+        assertThrows(RuntimeException.class,() -> dskæv.opretDosis(LocalTime.of(21, 00), 0));
     }
 
     @Test
@@ -61,5 +65,10 @@ class DagligSkaevTest {
         assertEquals(4,dskæv.samletDosis());
 
         assertEquals(4,dskæv.doegnDosis());
+
+        DagligSkaev dskæv2 = new DagligSkaev(l1, LocalDate.of(2024,03,22),LocalDate.of(2024,03,22));
+
+        assertThrows(RuntimeException.class,() -> dskæv2.opretDosis(LocalTime.of(13, 30), 0));
+
     }
 }
