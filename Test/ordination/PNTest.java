@@ -48,8 +48,6 @@ class PNTest {
         pn.givDosis(LocalDate.of(2024,03,22));
 
         assertEquals(5,pn.doegnDosis());
-
-
     }
 
     @Test

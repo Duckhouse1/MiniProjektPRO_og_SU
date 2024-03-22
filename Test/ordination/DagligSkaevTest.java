@@ -29,7 +29,6 @@ class DagligSkaevTest {
         Patient patient = new Patient("121256-0512", "Jane Jensen", 63.4);
 
         assertEquals(dskæv,dskæv);
-
     }
 
     @Test
@@ -47,8 +46,6 @@ class DagligSkaevTest {
         DagligSkaev dskæv2 = new DagligSkaev(l2, LocalDate.of(2024,03,22),LocalDate.of(2024,03,22));
 
         assertThrows(RuntimeException.class, () -> dskæv2.opretDosis(LocalTime.of(13, 30), -1));
-
-
     }
 
     @Test
