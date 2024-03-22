@@ -74,7 +74,6 @@ class ControllerTest {
 
         LocalTime[] klokkeslet = {tid1,tid2,tid3,tid4};
         DagligSkaev nyDagligSkæv = controller.opretDagligSkaevOrdination(startDato,slutDato,patient,laegemiddel,klokkeslet, tal);
-
         assertTrue(patient.getOrdinationList().contains(nyDagligSkæv));
     }
     @Test
