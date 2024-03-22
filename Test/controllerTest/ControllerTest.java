@@ -33,21 +33,38 @@ class ControllerTest {
     }
 
     @Test
-    void opretPNOrdinationTestAddTilPatient() {
+    void TC1opretPNOrdinationTest() {
         PN nypn = controller.opretPNOrdination(LocalDate.of(2024, 03, 12), LocalDate.of(2024, 03, 22),
                 patient, laegemiddel, 3);
         assertTrue(patient.getOrdinationList().contains(nypn));
     }
+    @Test
+    void TC2ExcepionopretPNOrdinationTest() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            PN nypn = controller.opretPNOrdination(LocalDate.of(2024, 03, 24), LocalDate.of(2024, 03, 22),
+                    patient, laegemiddel, 3);
+        });
+
+        assertEquals("Start dato skal komme før slut dato",exception.getMessage());
+    }
 
     @Test
-    void opretDagligFastOrdination() {
+    void TC1opretDagligFastOrdination() {
         DagligFast nyDagligFast = controller.opretDagligFastOrdination(startDato,slutDato,patient,laegemiddel,
                 2,3,0,1);
         assertTrue(patient.getOrdinationList().contains(nyDagligFast));
     }
-
     @Test
-    void opretDagligSkaevOrdination() {
+    void TC2ExceptionOpretDagligFastOrdination() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            DagligFast nyDagligFast = controller.opretDagligFastOrdination(startDato.plusDays(12),slutDato,patient,laegemiddel,
+                    2,3,0,1);
+        });
+
+        assertEquals("start dato skal være før slut dato",exception.getMessage());
+    }
+    @Test
+    void TC1opretDagligSkaevOrdination() {
         LocalTime tid1 = LocalTime.of(07,00);
         LocalTime tid2 = LocalTime.of(10,00);
         LocalTime tid3 = LocalTime.of(13,30);
@@ -60,6 +77,20 @@ class ControllerTest {
 
         assertTrue(patient.getOrdinationList().contains(nyDagligSkæv));
     }
+    @Test
+    void TC2ExceptionopretDagligSkaevOrdination() {
+        LocalTime tid1 = LocalTime.of(07,00);
+        LocalTime tid2 = LocalTime.of(10,00);
+        LocalTime tid3 = LocalTime.of(13,30);
+        LocalTime tid4 = LocalTime.of(16,00);
+        LocalTime[] klokkeslet = {tid1,tid2,tid3,tid4};
+
+        double tal[] = {2.0,4.0,1.0,2.0};
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->{
+            DagligSkaev nyDagligSkæv = controller.opretDagligSkaevOrdination(startDato.plusDays(12),slutDato,patient,laegemiddel,klokkeslet, tal);
+        });
+        assertEquals("Start dato skal være før slut dato",exception.getMessage());
+    }
 
     @Test
     void ordinationPNAnvendt() {
@@ -68,7 +99,6 @@ class ControllerTest {
 
         assertTrue(pn.getGemteDatoer().contains(valgtDag));
     }
-
     @Test
     void anbefaletDosisPrDoegn() {
     }
