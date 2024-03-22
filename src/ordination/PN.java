@@ -13,7 +13,6 @@ public class PN extends Ordination    {
     public PN(double antalEnheder,Laegemiddel laegemiddel, LocalDate startDen, LocalDate slutDen) {
         super(laegemiddel, startDen, slutDen);
         this.antalEnheder = antalEnheder;
-        antalGange++;
     }
     /**
      * Registrerer at der er givet en dosis paa dagen givesDen
@@ -58,4 +57,7 @@ public class PN extends Ordination    {
         return antalEnheder;
     }
 
+    public ArrayList<LocalDate> getGemteDatoer() {
+        return gemteDatoer;
+    }
 }
